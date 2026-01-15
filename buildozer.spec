@@ -24,7 +24,7 @@ orientation = portrait
 # presplash.filename = %(source.dir)s/splash.png
 
 # Build options
-android.archs = arm64-v8a
+android.archs = arm64-v8a, armeabi-v7a
 android.minapi = 21
 android.api = 30
 
