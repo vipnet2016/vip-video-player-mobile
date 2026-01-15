@@ -11,7 +11,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 
 # Version
 version = 1.0
-requirements = python3,kivy
+requirements = python3,kivy,requests,urllib3,certifi,idna,ssl_match_hostname,pathlib2,android,plyer
 
 # Permissions
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
@@ -35,14 +35,19 @@ android.api = 30
 android.enable_androidx = False
 android.enable_jar_warning = False
 android.accept_sdk_license = True
+# Use system NDK instead of downloading
+# android.ndk = 27.3.13750724
+android.ndk_path = /usr/local/lib/android/sdk/ndk/27.3.13750724
 # Use ant instead of gradle
 # android.gradle_enabled = False  # May not be supported in this version
 android.gradle_dependencies_enabled = False
+android.use_gradle_dispatch = False
+android.use_gradle_stub_app = False
 
 [buildozer]
 
 # Log level (2=verbose, 1=info, 0=warning)
-log_level = 2
+log_level = 2  # 2=verbose, 1=info, 0=warning
 
 # Directory to build in
 # build_dir = /tmp/buildozer
