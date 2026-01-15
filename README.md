@@ -55,4 +55,4 @@ buildozer android release
 - `mobile_video_player.py` - 主应用代码
 - `buildozer.spec` - 构建配置文件
 - `icon.png` - 应用图标（需要提供）
-- `splash.png` - 启动画面（需要提供）
+- `splash.png` - 启动画面（需要提供）# Workflow trigger 01/15/2026 19:07:20
