@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK for VIP Video Player
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
         buildozer android debug
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: apk-file
         path: bin/*.apk
