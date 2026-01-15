@@ -11,7 +11,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 
 # Version
 version = 1.0
-requirements = python3,kivy
+requirements = python3,kivy,urllib3,certifi,idna,ssl_match_hostname,pathlib2
 
 # Permissions
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
@@ -47,7 +47,7 @@ android.use_gradle_stub_app = False
 [buildozer]
 
 # Log level (2=verbose, 1=info, 0=warning)
-log_level = 2
+log_level = 2  # 2=verbose, 1=info, 0=warning
 
 # Directory to build in
 # build_dir = /tmp/buildozer
