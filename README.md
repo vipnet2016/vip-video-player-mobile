@@ -44,6 +44,23 @@ buildozer android release
 
 详情请参考 ONLINE_BUILD.md 文件。
 
+## 替代构建方案
+
+由于云端构建遇到了一些技术限制，我们提供了以下替代构建方案：
+
+1. **本地Docker构建**：使用官方的Kivy构建Docker镜像进行本地构建
+   ```bash
+   docker run --rm -v "$PWD":/home/user/hostcwd kivy/buildozer android debug
+   ```
+
+2. **使用Flet框架**：将应用重构为Flet应用，提供更好的跨平台兼容性
+
+3. **GitHub Codespaces**：在GitHub Codespaces中进行构建
+
+4. **第三方APK构建服务**：使用在线APK构建平台
+
+详情请参考 BUILD_ISSUES.md 文件。
+
 ## 注意事项
 
 - 首次构建会下载大量Android SDK和NDK组件，可能需要较长时间
