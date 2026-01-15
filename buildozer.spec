@@ -7,6 +7,7 @@ package.domain = com.example
 
 # Source code
 source.dir = .
+source.exclude_patterns = mobile_video_player.py, main.py, video_line_opener.py, video_line_opener copy.py, video_history.json, video_lines.json
 source.include_exts = py,png,jpg,kv,atlas,json
 
 # Version
