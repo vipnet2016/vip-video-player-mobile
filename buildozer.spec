@@ -11,7 +11,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 
 # Version
 version = 1.0
-requirements = python3,kivy,urllib3,certifi,idna,ssl_match_hostname,pathlib2
+requirements = python3,kivy,requests,urllib3,certifi,idna,ssl_match_hostname,pathlib2,android,plyer
 
 # Permissions
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
