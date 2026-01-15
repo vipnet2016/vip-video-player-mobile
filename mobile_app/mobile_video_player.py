@@ -182,8 +182,12 @@ class MobileVideoPlayerApp(App):
         try:
             from kivy.utils import platform
             if platform == 'android':
-                from android.storage import app_storage_path
-                path = Path(app_storage_path()) / '.video_player'
+                try:
+                    from android.storage import app_storage_path
+                    path = Path(app_storage_path()) / '.video_player'
+                except ImportError:
+                    # 如果android模块不可用，回退到标准路径
+                    path = Path.home() / '.video_player'
             else:
                 path = Path.home() / '.video_player'
         except ImportError:
