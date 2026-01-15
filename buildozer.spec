@@ -35,6 +35,7 @@ android.api = 30
 android.enable_androidx = False
 android.enable_jar_warning = False
 android.accept_sdk_license = True
+android.ndk = 27.3.13750724
 # Use ant instead of gradle
 # android.gradle_enabled = False  # May not be supported in this version
 android.gradle_dependencies_enabled = False
