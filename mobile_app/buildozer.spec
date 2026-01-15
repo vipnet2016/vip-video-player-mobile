@@ -11,7 +11,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 
 # Version
 version = 1.0
-requirements = python3,kivy,requests,urllib3,certifi,idna,ssl_match_hostname,pathlib2,android,plyer
+requirements = python3,kivy==2.2.1
 
 # Permissions
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
@@ -24,7 +24,7 @@ orientation = portrait
 # presplash.filename = %(source.dir)s/splash.png
 
 # Build options
-android.archs = arm64-v8a
+android.archs = arm64-v8a, armeabi-v7a
 android.minapi = 21
 android.api = 30
 
@@ -39,7 +39,7 @@ android.accept_sdk_license = True
 # android.ndk = 27.3.13750724
 android.ndk_path = /usr/local/lib/android/sdk/ndk/27.3.13750724
 # Use ant instead of gradle
-# android.gradle_enabled = False  # May not be supported in this version
+android.gradle_enabled = False
 android.gradle_dependencies_enabled = False
 android.use_gradle_dispatch = False
 android.use_gradle_stub_app = False
