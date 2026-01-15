@@ -39,7 +39,7 @@ android.accept_sdk_license = True
 # android.ndk = 27.3.13750724
 android.ndk_path = /usr/local/lib/android/sdk/ndk/27.3.13750724
 # Use ant instead of gradle
-# android.gradle_enabled = False  # May not be supported in this version
+android.gradle_enabled = False
 android.gradle_dependencies_enabled = False
 android.use_gradle_dispatch = False
 android.use_gradle_stub_app = False
