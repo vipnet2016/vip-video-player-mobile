@@ -90,25 +90,23 @@ jobs:
         pwd
         echo "Searching for APK files..."
         find . -type f -name "*.apk" -print
-        echo "Listing build directory contents..."
-        ls -la app_build/build/ 2>/dev/null || echo "Build directory doesn't exist"
-        ls -la app_build/build/app/ 2>/dev/null || echo "App build directory doesn't exist"
-        ls -la app_build/build/app/outputs/ 2>/dev/null || echo "Outputs directory doesn't exist"
-        ls -la app_build/build/app/outputs/flutter-apk/ 2>/dev/null || echo "Flutter APK directory doesn't exist"
+        echo "Searching for all files in build directory..."
+        find app_build/build -type f -name "*" -print | head -50
+        echo "List all directories in app_build..."
+        find app_build -type d -name "*" -print
         
-    - name: Upload APK (all APKs)
+    - name: Upload All APK Files
       uses: actions/upload-artifact@v4
       with:
-        name: flet-apk-all
-        path: app_build/**/*.apk
+        name: flet-apk-all-files
+        path: |
+          **/*.apk
+          app_build/**/*.apk
+          app_build/build/**/*
       if: success()
       
-    - name: Upload APK (debug and release fallback)
-      uses: actions/upload-artifact@v4
-      with:
-        name: flet-apk-fallback
-        path: |
-          app_build/build/app/outputs/flutter-apk/*debug.apk
-          app_build/build/app/outputs/flutter-apk/*release.apk
-          app_build/build/app/outputs/flutter-apk/*.apk
-      if: success()
+    - name: Show APK files before upload
+      run: |
+        echo "Looking for APK files to upload..."
+        find . -type f -name "*.apk" -exec ls -la {} \;
+        echo "APK files found: $(find . -type f -name "*.apk" | wc -l)"
