@@ -29,15 +29,27 @@ def build_flet_app():
     except Exception as e:
         print(f"安装flet-cli时出错: {e}")
 
-    # 尝试使用正确的flet build命令格式
+    # 尝试使用正确的flet build命令格式 - 查看帮助以确定正确参数
+    print("查看Flet构建选项...")
+    help_cmd = [
+        sys.executable, "-m", "flet.cli", "build", "-h"
+    ]
+    
+    try:
+        result = subprocess.run(help_cmd, cwd=os.getcwd(), capture_output=True, text=True)
+        print("Flet build帮助信息:")
+        print(result.stdout)
+    except:
+        print("无法获取Flet build帮助信息")
+    
+    # 尝试使用正确的参数格式
     build_cmd = [
         sys.executable, "-m", "flet.cli", "build",
-        "apk",  # 目标平台放在前面
-        ".",    # 当前目录作为应用路径
-        "--project-name", "VIP多线路播放器",
-        "--app-id", "com.vip.videoplayer",
-        "--description", "VIP多线路视频播放器",
-        "--module-name", "flet_app"  # 指定模块名
+        "apk",
+        ".",
+        "--project", "VIP多线路播放器",
+        "--bundle-id", "com.vip.videoplayer",
+        "--module-name", "flet_app"
     ]
     
     try:
@@ -58,28 +70,25 @@ def build_flet_app():
         print(f"构建失败: {e}")
         print(f"错误输出: {e.stderr}")
         
-        # 尝试备用构建命令格式
-        print("\n尝试备用构建方法...")
-        return build_with_correct_format()
+        # 尝试简化命令
+        print("\n尝试简化构建命令...")
+        return build_with_simplified_command()
     except FileNotFoundError:
         print("错误: 找不到flet构建命令")
         print("请确保Flet已正确安装: pip install flet")
-        return build_with_correct_format()
+        return build_with_simplified_command()
 
-def build_with_correct_format():
-    """使用正确的格式构建应用"""
+def build_with_simplified_command():
+    """使用简化命令构建应用"""
     try:
-        # 尝试正确的命令格式
+        # 尝试最基本的构建命令
         build_cmd = [
             sys.executable, "-m", "flet.cli", "build",
-            "apk",  # 平台名称
-            ".",    # 当前目录
-            "--project", "VIP多线路播放器",
-            "--bundle-id", "com.vip.videoplayer",
-            "--module-name", "flet_app"
+            "apk",
+            "."
         ]
         
-        print("执行备用构建命令...")
+        print("执行简化构建命令...")
         result = subprocess.run(build_cmd, cwd=os.getcwd(), check=True, capture_output=True, text=True)
         print("构建输出:")
         print(result.stdout)
@@ -92,10 +101,15 @@ def build_with_correct_format():
         print("APK文件应该在 build/ 目录中")
         return True
     except (subprocess.CalledProcessError, FileNotFoundError) as e:
-        print(f"备用构建方法也失败: {e}")
+        print(f"简化构建命令也失败: {e}")
         print("\n提示: Flet构建APK需要额外的Android开发环境配置。")
         print("您也可以在本地开发模式下运行应用: python flet_app.py")
         print("或者使用云端构建工作流，它会在云端环境中自动配置所需的Android SDK。")
+        print("\nAndroid环境需要包括:")
+        print("- Java Development Kit (JDK)")
+        print("- Android SDK")
+        print("- Android NDK")
+        print("- Android Virtual Device (AVD) 或真实设备")
         return False
 
 def run_dev_server():

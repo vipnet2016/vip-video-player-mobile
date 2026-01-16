@@ -1,103 +1,92 @@
-# VIP多线路播放器 - 移动版
+# VIP多线路播放器 - Flet版本
 
-这是VIP多线路播放器的移动版本，使用Kivy框架开发，可打包为Android APK。
+使用Flet框架构建的跨平台VIP视频播放器应用。
 
-## 构建说明
+## 特性
 
-### 环境要求
-- Linux系统（或WSL2）
-- Python 3.7+
-- Buildozer
-
-### 安装Buildozer
-```bash
-pip install buildozer
-```
-
-### 初始化并构建
-```bash
-cd /path/to/mobile_app
-buildozer init
-buildozer android debug
-```
-
-### 构建发布版本
-```bash
-buildozer android release
-```
-
-## 功能说明
-
-- 视频链接解析播放
-- 多线路选择
+- 支持多视频线路播放
 - 自动线路匹配
 - 历史记录管理
-- 网络连接检测
+- 现代化UI界面
+- 跨平台支持（Web、桌面、移动端）
 
-## 在线构建方案
+## 快速开始
 
-如果本地构建遇到问题，可以使用GitHub Actions进行在线构建：
+### 运行开发版本
 
-1. 创建GitHub仓库并推送代码
-2. GitHub Actions将自动构建APK
-3. 在Actions页面下载构建产物
-
-详情请参考 ONLINE_BUILD.md 文件。
-
-## Flet版本构建（推荐）
-
-我们已提供使用Flet框架的版本，这是更现代和稳定的跨平台解决方案。
-
-### 快速开始
-
-1. **安装依赖**：
+1. 安装Flet：
    ```bash
    pip install flet
    ```
 
-2. **运行开发版本**：
+2. 运行应用：
    ```bash
    python flet_app.py
    ```
 
-3. **构建APK**：
-   ```bash
-   python build_flet.py --build
-   ```
+### 构建APK（Android应用）
 
-### Flet版本特性
+#### 本地构建（需要完整Android环境）
 
-- 更简单的部署流程
-- 更好的跨平台兼容性
+本地构建APK需要完整的Android开发环境，包括：
+
+- Java Development Kit (JDK)
+- Android SDK
+- Android NDK
+- Android Virtual Device (AVD) 或真实设备
+
+如果您的本地环境尚未配置Android开发环境，可以使用以下命令安装必要组件：
+
+```bash
+# 安装Android SDK和相关工具
+# 请参考官方Android开发文档进行环境配置
+```
+
+然后运行构建命令：
+
+```bash
+python build_flet.py --build
+```
+
+#### 云端构建（推荐）
+
+由于本地Android环境配置较为复杂，我们推荐使用云端构建：
+
+1. 将代码推送到GitHub仓库
+2. GitHub Actions会自动运行Flet构建工作流
+3. 构建完成后，APK文件会作为构建产物提供下载
+
+## 文件结构
+
+- `flet_app.py` - Flet应用主文件
+- `build_flet.py` - Flet构建脚本
+- `.github/workflows/flet-build-apk.yml` - GitHub Actions构建工作流
+
+## Flet构建脚本使用方法
+
+```bash
+# 运行开发服务器
+python build_flet.py --dev
+
+# 构建APK
+python build_flet.py --build
+```
+
+## 技术说明
+
+此应用是从原始的tkinter应用重构而来，使用Flet框架提供更好的跨平台体验。相比之前的Buildozer方案，Flet提供了：
+
+- 更简单的开发体验
 - 更少的环境依赖问题
-- 现代化的UI体验
-
-## 替代构建方案
-
-由于云端构建遇到了一些技术限制，我们提供了以下替代构建方案：
-
-1. **本地Docker构建**：使用官方的Kivy构建Docker镜像进行本地构建
-   ```bash
-   docker run --rm -v "$PWD":/home/user/hostcwd kivy/buildozer android debug
-   ```
-
-2. **使用Flet框架**：将应用重构为Flet应用，提供更好的跨平台兼容性
-
-3. **GitHub Codespaces**：在GitHub Codespaces中进行构建
-
-4. **第三方APK构建服务**：使用在线APK构建平台
-
-详情请参考 BUILD_ISSUES.md 文件。
+- 现代化的UI组件
+- 更好的跨平台兼容性
 
 ## 注意事项
 
-- 首次构建会下载大量Android SDK和NDK组件，可能需要较长时间
-- 确保网络连接稳定
-- 构建过程中需要足够的磁盘空间
+- 本地APK构建需要较复杂的Android环境配置
+- 推荐使用云端构建获得最佳体验
+- 应用功能与原始版本完全一致
 
-## 文件说明
+## 替代方案
 
-- `mobile_video_player.py` - 主应用代码
-- `buildozer.spec` - 构建配置文件
-- `icon.png` - 应用图标（需要提供）
-- `splash.png` - 启动画面（需要提供）# Workflow trigger 01/15/2026 19:07:20
+如果Flet构建仍然存在问题，项目还保留了Kivy/Buildozer实现的历史版本（在.git历史中），但Flet是当前推荐的实现方案。
