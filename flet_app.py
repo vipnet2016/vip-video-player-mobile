@@ -315,7 +315,7 @@ def main(page: ft.Page):
         """更新历史记录显示"""
         history_list.controls.clear()
         for item in player.history_items:
-            btn = ft.ElevatedButton(
+            btn = ft.FilledButton(
                 text=item[:50] + "..." if len(item) > 50 else item,
                 on_click=lambda e, url=item: fill_from_history(e, url),
                 style=ft.ButtonStyle(padding=ft.padding.all(5)),
@@ -396,15 +396,15 @@ def main(page: ft.Page):
             ft.Text("VIP多线路视频播放器", size=24, weight=ft.FontWeight.BOLD),
             ft.Text("粘贴视频网址 → 线路自动打开播放 | 播放历史记录 → 回填", size=14),
             
-            ft.Row([url_input, ft.ElevatedButton("粘贴", on_click=paste_url, width=60)], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+            ft.Row([url_input, ft.FilledButton("粘贴", on_click=paste_url, width=60)], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
             
-            ft.Row([line_dropdown, ft.ElevatedButton("刷新", on_click=lambda e: None, width=60)], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+            ft.Row([line_dropdown, ft.FilledButton("刷新", on_click=lambda e: None, width=60)], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
             
             ft.Row([
-                ft.ElevatedButton("打开", on_click=open_video, bgcolor="green", color="white"),
-                ft.ElevatedButton("检测", on_click=check_line, bgcolor="orange", color="white"),
-                ft.ElevatedButton("清空", on_click=clear_input, bgcolor="red", color="white"),
-                ft.ElevatedButton("退出", on_click=lambda e: page.window_close(), bgcolor="grey", color="white")
+                ft.FilledButton("打开", on_click=open_video, bgcolor="green", color="white"),
+                ft.FilledButton("检测", on_click=check_line, bgcolor="orange", color="white"),
+                ft.FilledButton("清空", on_click=clear_input, bgcolor="red", color="white"),
+                ft.FilledButton("退出", on_click=lambda e: page.window_close(), bgcolor="grey", color="white")
             ], alignment=ft.MainAxisAlignment.SPACE_AROUND),
 
             ft.Divider(thickness=1),
@@ -412,8 +412,8 @@ def main(page: ft.Page):
             history_list,
             
             ft.Row([
-                ft.ElevatedButton("回填选中", on_click=lambda e: None),
-                ft.ElevatedButton("清空历史", on_click=clear_history, bgcolor="red", color="white")
+                ft.FilledButton("回填选中", on_click=lambda e: None),
+                ft.FilledButton("清空历史", on_click=clear_history, bgcolor="red", color="white")
             ], alignment=ft.MainAxisAlignment.SPACE_AROUND),
 
             status_text
