@@ -76,11 +76,14 @@ jobs:
         cd app_build
         ls -la
         
-    - name: Build Flet app - Main build
+    - name: Build Flet app - Main build (non-interactive)
       run: |
         cd app_build
         flutter config --enable-android
-        flet build apk .
+        # Use environment variable to auto-confirm Flutter installation
+        export FLET_FORCE_FLUTTER_INSTALL="true"
+        # Or try using yes command to auto-answer prompts
+        yes | flet build apk . || flet build apk .
         
     - name: Show build directory structure
       run: |
