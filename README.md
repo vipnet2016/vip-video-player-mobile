@@ -44,6 +44,34 @@ buildozer android release
 
 详情请参考 ONLINE_BUILD.md 文件。
 
+## Flet版本构建（推荐）
+
+我们已提供使用Flet框架的版本，这是更现代和稳定的跨平台解决方案。
+
+### 快速开始
+
+1. **安装依赖**：
+   ```bash
+   pip install flet
+   ```
+
+2. **运行开发版本**：
+   ```bash
+   python flet_app.py
+   ```
+
+3. **构建APK**：
+   ```bash
+   python build_flet.py --build
+   ```
+
+### Flet版本特性
+
+- 更简单的部署流程
+- 更好的跨平台兼容性
+- 更少的环境依赖问题
+- 现代化的UI体验
+
 ## 替代构建方案
 
 由于云端构建遇到了一些技术限制，我们提供了以下替代构建方案：
