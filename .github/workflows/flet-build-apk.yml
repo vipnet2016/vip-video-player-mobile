@@ -80,7 +80,7 @@ jobs:
       run: |
         cd app_build
         flutter config --enable-android
-        flet build apk --project-name "VIP多线路播放器" --org com.vip --project com.vip.videoplayer
+        flet build apk .
         
     - name: Show build directory structure
       run: |
