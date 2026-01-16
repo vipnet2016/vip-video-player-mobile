@@ -88,19 +88,27 @@ jobs:
     - name: Show build directory structure
       run: |
         pwd
+        echo "Searching for APK files..."
         find . -type f -name "*.apk" -print
-        find . -path "*/build/*" -name "*" -type f | head -20
+        echo "Listing build directory contents..."
+        ls -la app_build/build/ 2>/dev/null || echo "Build directory doesn't exist"
+        ls -la app_build/build/app/ 2>/dev/null || echo "App build directory doesn't exist"
+        ls -la app_build/build/app/outputs/ 2>/dev/null || echo "Outputs directory doesn't exist"
+        ls -la app_build/build/app/outputs/flutter-apk/ 2>/dev/null || echo "Flutter APK directory doesn't exist"
         
-    - name: Upload APK
+    - name: Upload APK (all APKs)
       uses: actions/upload-artifact@v4
       with:
-        name: flet-apk
-        path: app_build/build/app/outputs/flutter-apk/*release.apk
+        name: flet-apk-all
+        path: app_build/**/*.apk
       if: success()
       
-    - name: Upload APK (alternative path)
+    - name: Upload APK (debug and release fallback)
       uses: actions/upload-artifact@v4
       with:
-        name: flet-apk-debug
-        path: app_build/build/app/outputs/flutter-apk/*debug.apk
+        name: flet-apk-fallback
+        path: |
+          app_build/build/app/outputs/flutter-apk/*debug.apk
+          app_build/build/app/outputs/flutter-apk/*release.apk
+          app_build/build/app/outputs/flutter-apk/*.apk
       if: success()
