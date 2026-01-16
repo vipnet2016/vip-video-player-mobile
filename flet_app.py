@@ -306,7 +306,7 @@ def main(page: ft.Page):
     )
 
     # 状态文本
-    status_text = ft.Text(value="就绪", size=12, color=ft.colors.GREY_600)
+    status_text = ft.Text(value="就绪", size=12, color="grey")  # 使用字符串颜色值
 
     # 历史记录列表
     history_list = ft.Column(spacing=5, scroll=ft.ScrollMode.ADAPTIVE)
@@ -401,10 +401,10 @@ def main(page: ft.Page):
             ft.Row([line_dropdown, ft.ElevatedButton("刷新", on_click=lambda e: None, width=60)], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
             
             ft.Row([
-                ft.ElevatedButton("打开", on_click=open_video, bgcolor=ft.colors.GREEN, color=ft.colors.WHITE),
-                ft.ElevatedButton("检测", on_click=check_line, bgcolor=ft.colors.ORANGE, color=ft.colors.WHITE),
-                ft.ElevatedButton("清空", on_click=clear_input, bgcolor=ft.colors.RED, color=ft.colors.WHITE),
-                ft.ElevatedButton("退出", on_click=lambda e: page.window_close(), bgcolor=ft.colors.GREY, color=ft.colors.WHITE)
+                ft.ElevatedButton("打开", on_click=open_video, bgcolor="green", color="white"),
+                ft.ElevatedButton("检测", on_click=check_line, bgcolor="orange", color="white"),
+                ft.ElevatedButton("清空", on_click=clear_input, bgcolor="red", color="white"),
+                ft.ElevatedButton("退出", on_click=lambda e: page.window_close(), bgcolor="grey", color="white")
             ], alignment=ft.MainAxisAlignment.SPACE_AROUND),
 
             ft.Divider(thickness=1),
@@ -413,7 +413,7 @@ def main(page: ft.Page):
             
             ft.Row([
                 ft.ElevatedButton("回填选中", on_click=lambda e: None),
-                ft.ElevatedButton("清空历史", on_click=clear_history, bgcolor=ft.colors.RED, color=ft.colors.WHITE)
+                ft.ElevatedButton("清空历史", on_click=clear_history, bgcolor="red", color="white")
             ], alignment=ft.MainAxisAlignment.SPACE_AROUND),
 
             status_text
@@ -426,4 +426,4 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    ft.app(target=main)
+    ft.run(main)  # 使用新推荐的入口方法

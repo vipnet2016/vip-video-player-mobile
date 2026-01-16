@@ -14,7 +14,7 @@ def build_flet_app():
     # 检查flet是否已安装
     try:
         import flet
-        print(f"Flet版本: {flet.__version__}")
+        print(f"Flet版本: {flet.version.VERSION}")
     except ImportError:
         print("错误: Flet未安装，请运行 'pip install flet'")
         return False
@@ -60,7 +60,7 @@ def run_dev_server():
     
     try:
         import flet
-        print(f"Flet版本: {flet.__version__}")
+        print(f"Flet版本: {flet.version.VERSION}")
     except ImportError:
         print("错误: Flet未安装，请运行 'pip install flet'")
         return False
