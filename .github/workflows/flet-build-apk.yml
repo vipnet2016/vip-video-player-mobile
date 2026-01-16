@@ -68,7 +68,7 @@ jobs:
         pwd
         ls -la
         mkdir -p app_build
-        cp flet_app.py app_build/
+        cp flet_app.py app_build/main.py  # Rename to main.py as expected by flet
         cp -r .??* app_build/ 2>/dev/null || true  # copy hidden files like .env, .gitignore, etc.
         
     - name: Check app files
@@ -76,16 +76,11 @@ jobs:
         cd app_build
         ls -la
         
-    - name: Build Flet app - Create project
-      run: |
-        cd app_build
-        flet create . --type app
-        
     - name: Build Flet app - Main build
       run: |
         cd app_build
         flutter config --enable-android
-        flet build apk --verbose
+        flet build apk --project-name "VIP多线路播放器" --org com.vip --project com.vip.videoplayer
         
     - name: Show build directory structure
       run: |
